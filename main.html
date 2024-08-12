@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banner</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .banner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #f5f5f5;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 600px;
+        }
+        .content {
+            display: flex;
+            flex-direction: column;
+        }
+        h2, p {
+            margin: 0;
+            padding: 0;
+        }
+        #swap-button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 6px;
+
+            padding: 10px 20px;
+            background-color: #4f4f4f;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        #swap-button:hover {
+            background-color: #3d3d3d;
+        }
+    </style>
+</head>
+<body>
+<div class="banner">
+    <div class="content">
+        <h2 id="title">Я ‒ заголовок, я тут власть!!!</h2>
+        <p id="text">Я ‒ текст, плиз, повысь меня :(</p>
+    </div>
+    <button id="swap-button">
+        <img src="assets/swap-icon.png" alt="swap-icon" width="16px">
+        Свап текста (0)
+    </button>
+</div>
+
+<script>
+    let counter = 0;
+
+    document.getElementById('swap-button').addEventListener('click', function() {
+        let title = document.getElementById('title');
+        let text = document.getElementById('text');
+        let prevState = title.innerHTML;
+        title.innerHTML = text.innerHTML;
+        text.innerHTML = prevState;
+
+        counter++;
+        this.innerHTML = `<img src="assets/swap-icon.png" alt="swap-icon" width="16px"> Свап текста (${counter})`;
+    });
+</script>
+</body>
+</html>
